@@ -17,8 +17,8 @@ function styleMain() {
     .pipe(browserSync.stream())
 }
 
-function styleDemo() {
-    return gulp.src('./demo/assets/scss/*.scss')
+function styleAssemblages() {
+    return gulp.src('./assemblages/assets/scss/*.scss')
     .pipe(sourceMaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
@@ -32,12 +32,12 @@ function watch() {
         server: {
             baseDir: './',
         },
-        startPath: './demo/index.html',
+        startPath: './assemblages/index.html',
         ghostMode: false,
         notify: false
     });
     gulp.watch('./src/scss/**/*.scss', styleMain);
-    gulp.watch('./demo/assets/scss/**/*.scss', styleDemo);
+    gulp.watch('./assemblages/assets/scss/**/*.scss', styleAssemblages);
     gulp.watch('./**/*.html').on('change', browserSync.reload);
     gulp.watch('./assets/js/**/*.js').on('change', browserSync.reload);
 
@@ -60,7 +60,41 @@ function buildAddonVendors() {
     return (addon1, addon2, addon3, addon4);
 }
 
-exports.style = gulp.parallel(styleMain, styleDemo);
+const deploy = require('gulp-gh-pages');
+const useref = require('gulp-useref');
+const uglify = require('gulp-uglify');
+const gulpIf = require('gulp-if');
+const cssnano = require('gulp-cssnano');
+const imagemin = require('gulp-imagemin');
+
+gulp.task('useref', function(){
+    return gulp.src('assemblages/*.html')
+        .pipe(useref())
+        .pipe(gulpIf('*.js', uglify()))
+        // Minifies only if it's a CSS file
+        .pipe(gulpIf('*.css', cssnano()))
+        .pipe(gulp.dest('dist'))
+});
+
+gulp.task('images', function(){
+    return gulp.src('assemblages/assets/**/*.+(png|jpg|gif|svg)')
+        .pipe(imagemin())
+        .pipe(gulp.dest('dist/assets/'))
+});
+
+gulp.task('clean:dist',function () {
+    return del('dist');
+})
+
+/**
+ * Push build to gh-pages
+ */
+gulp.task('deploy', function () {
+    return gulp.src("./dist/**/*")
+        .pipe(deploy())
+});
+
+exports.style = gulp.parallel(styleMain, styleAssemblages);
 exports.watch = watch;
 exports.cleanVendors = cleanVendors;
 exports.buildAddonVendors = gulp.series(cleanVendors, buildAddonVendors);

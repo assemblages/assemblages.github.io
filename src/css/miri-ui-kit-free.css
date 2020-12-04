@@ -8365,10 +8365,7 @@ footer {
 
 
 .miri-ui-kit-header {
-  font-family: hero-new-hairline,sans-serif;
-  font-weight: bold;
-  font-style: normal;
-  text-align: left;
+
   color: black;
   display: -webkit-box;
   display: flex;
@@ -8381,21 +8378,13 @@ footer {
   background-size: cover;
   background-repeat: no-repeat; }
   .miri-ui-kit-header .miri-ui-kit-header-content {
-    background-color: #F9A01B;
-    padding: 10% 10% 10% 10%;
+
+
     line-height: 5px;
     margin-top: auto;
     margin-bottom: auto;
     -webkit-transform: translateY(-30px);
             transform: translateY(-30px); }
-    .miri-ui-kit-header .miri-ui-kit-header-content .menu-link{
-      transition:0.7s;
-      color: black;
-    }
-    .miri-ui-kit-header .miri-ui-kit-header-content .menu-link:hover{
-      color: #22AC9B;
-      text-decoration: none;
-    }
   .miri-ui-kit-header.header-navbar-only {
     height: auto; }
   .miri-ui-kit-header.header-no-bg-img {

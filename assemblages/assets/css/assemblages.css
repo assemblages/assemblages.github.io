@@ -1,0 +1,32 @@
+
+*{
+    margin:0;
+    padding:0;
+    border:0;
+}
+.assemblages-wrapper{
+    border: none;
+    width: 1200px;
+    margin: auto;
+}
+
+.assemblages-content{
+    font-family: hero-new-hairline,sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    text-align: left;
+}
+
+.assemblages-landing-header{
+    background-color: #F9A01B;
+    padding: 10% 10% 10% 10%;
+    margin-bottom: 30px;
+}
+.menu-link{
+    transition:0.7s;
+    color: black;
+}
+.menu-link:hover{
+    color: #22AC9B;
+    text-decoration: none;
+}

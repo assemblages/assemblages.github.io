@@ -1,6 +1,6 @@
 /package-lock.json
 /node_modules/
 .idea/
-.dist/
+dist/
 .publish/
-.assets/
+assets/

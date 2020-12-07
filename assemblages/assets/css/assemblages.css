@@ -5,8 +5,9 @@
 
 .assemblages-wrapper {
   border: none;
-  width: 800px;
-  margin: auto; }
+  width: 1080px;
+  margin: auto;
+  opacity: 70%; }
 
 .assemblages-content {
   font-family: hero-new-hairline,sans-serif;
@@ -20,13 +21,13 @@
   margin-bottom: 30px; }
 
 .menu {
-  line-height: 0.5; }
+  line-height: 0.5;
+  font-size: 1.4em; }
   .menu a {
     font-weight: 750; }
   .menu .menu-link {
-    transition: 0.3s;
+    transition: 0.78s;
     color: black;
-    font-size: 0.7em;
     line-height: 1; }
     .menu .menu-link:hover {
       color: #22AC9B;

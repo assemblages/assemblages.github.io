@@ -23,7 +23,7 @@ function styleAssemblages() {
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(sourceMaps.write('./'))
-    .pipe(gulp.dest('./demo/assets/css'))
+    .pipe(gulp.dest('./assemblages/assets/css'))
     .pipe(browserSync.stream())
 }
 
